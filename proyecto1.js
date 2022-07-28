@@ -1,22 +1,57 @@
-/* La idea es que sea una especie de validacion en la compra de unas zapatillas*/
+/*
+let nike = 50
 
-let confirmacion = true
-while(confirmacion){
-    let marca = prompt("Que marca desea?")
-    let talle = parseFloat(prompt("Cual es su talle?"))
-    let color = prompt("en que color le gustarian?")
+let puma = 40
+let adidas = 55
+let sandalias = 30
+let precio = 0
+let confirm = si
 
-    console.log(`Usted desea unas ${marca} de talle ${talle}  de color ${color}`)
+function agregar(marca){
+  do{
+    marca = prompt("que marca desea agregar?").toLocaleLowerCase
+    confirm = prompt("desea agregar mas productos?").toLocaleLowerCase
+    return precio + marca
+  } while( confirm === si)
+}
+agregar(puma)
+console.log(precio)*/
+////////////////////////////
+////////////////////////
 
-    let repetir = prompt("Desea hacer algun cambio?").toLocaleLowerCase()
 
-    if(repetir === "no"){
-    confirmacion = false}
+let velocidad = parseFloat(prompt("velocidad?"))
+
+function aumentarVelocidad(vel){
+  while(vel < 100){ 
+  vel += 10
+  console.log(vel)
+}}
+function reducirVelocidad(vel){
+  while(vel > 100){ 
+  vel -= 10
+  console.log(vel)
+}}
+
+if( velocidad > 100 ) {
+  reducirVelocidad(velocidad)
+} else{
+  aumentarVelocidad(velocidad)
 }
 
 
- 
 
 
 
 
+
+
+////////////////////////////////////////////////
+/*
+let velocidad = 50
+let variacion
+do {
+  variacion = prompt(`Ingrese una opcion:  1-subri velocidad  2-bajar velocidad 3-mantener`)
+  switch
+
+} while(velocidad=50)*/
