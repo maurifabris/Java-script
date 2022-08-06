@@ -24,17 +24,21 @@ class Charizard  extends Pokemon {
 
     //mas adelante la idea es que el usuario pueda elegir a quien atacar, lo podria hacer con un promt?
     lanzallamas(PokemonAtacado){ 
-      console.log(`${this.nombre} uso ¡Latigazo! causando ${this.danioLanzallamas}`)
+      if(PokemonAtacado.clase == "Agua"){
+          const parraLanzallamasAgua = document.getElementById("dialogojs")
+          parraLanzallamasAgua.innerText = (`${this.nombre} uso ¡Lanza llamas! Causando ${(this.danioLanzallamas * 0.85)} porque su rival es de tipo agua`)
+          PokemonAtacado.recibirAtaque(this.danioLanzallamas * 0.90)
+      }
+      if(PokemonAtacado.clase === "Planta"){
+      console.log(`${this.nombre} uso ¡Lanza llamas! Causando ${this.danioLanzallamas * 1.25} porque su rival es de tipo planta`)
+      PokemonAtacado.recibirAtaque(this.danioLanzallamas * 1.25)}
+      if(PokemonAtacado.clase === "Fuego"){
+      console.log(`${this.nombre} uso ¡Lanza llamas! Causando ${this.danioLanzallamas}`)
       PokemonAtacado.recibirAtaque(this.danioLanzallamas)
-
-      /*if(PokemonAtacado.clase = "Agua"){
-        console.log(`${this.nombre} uso ¡Lanza llamas! causando ${(this.danioLanzallamas * 0.90)} por que su enemigo es de tipo agua`) } else { 
-      PokemonAtacado.recibirAtaque(this.danioLanzallamas)
-      console.log(`${this.nombre} uso ¡Lanza llamas! causando ${this.danioLanzallamas}`)
-      PokemonAtacado.recibirAtaque(this.danioLanzallamas)
-    }*/
+      } 
+    }
   }
-}
+
   
 
   class Bulbasaur  extends Pokemon {
@@ -55,10 +59,20 @@ class Charizard  extends Pokemon {
         this.danioBurbujas = danioBurbujas
     }
     burbujas(PokemonAtacado){
-      console.log(`${this.nombre} uso ¡Burbujas! causando ${this.danioBurbujas}`)
-      PokemonAtacado.recibirAtaque(this.danioBurbujas)
+      if(PokemonAtacado.clase === "Planta"){
+        const parraLanzallamasAgua = document.getElementById("dialogo2")
+        parraLanzallamasAgua.innerText = (`${this.nombre} uso ¡Burbujas! Causando ${(this.danioBurbujas * 0.85)} porque su rival es de tipo Planta`)
+        PokemonAtacado.recibirAtaque(this.danioBurbujas * 0.90)
     }
-    
+    if(PokemonAtacado.clase === "Fuego"){
+      const parraLanzallamasAgua = document.getElementById("dialogo2")
+      parraLanzallamasAgua.innerText = `${this.nombre} uso ¡Burbujas! Causando ${(this.danioBurbujas * 1.25)} porque su rival es de tipo Fuego`
+    PokemonAtacado.recibirAtaque(this.danioBurbujas * 1.25)}
+    if(PokemonAtacado.clase === "Agua"){
+    console.log(`${this.nombre} uso ¡Burbujas! Causando ${this.danioBurbujas}`)
+    PokemonAtacado.recibirAtaque(this.danioBurbujas)
+    } 
   }
+}
 
 
