@@ -1,4 +1,4 @@
-/*class Pokemon {
+class Pokemon {
   constructor(nombreParam, claseParam, vidaParam) {
     this.nombre = nombreParam
     this.clase = claseParam
@@ -8,11 +8,12 @@
   //este metodo es para que reciban los ataques, tambien quiero hacer uno de usar pociones
   recibirAtaque(danio) {
     if (this.vida - danio <= 0) {
+      this.vida -= danio
       console.log(`${this.nombre} se devilito`)
     } else {
+      this.vida -= danio
       console.log(`${this.nombre} aguanto el ataque y ahora tiene ${this.vida}`)
     }
-    this.vida -= danio
   }
 }
 
@@ -24,75 +25,76 @@ class Charizard extends Pokemon {
 
   //mas adelante la idea es que el usuario pueda elegir a quien atacar, lo podria hacer con un promt?
   lanzallamas(PokemonAtacado) {
-    if (PokemonAtacado.clase == "Agua") {
-      const parraLanzallamasAgua = document.getElementById("dialogojs")
-      TodosLosPokemon.forEach(ataque =>){
-      divdialogojs
+      switch (PokemonAtacado.clase) {
+        case "Agua": {
+          console.log(`${this.nombre} uso ¡Lanza llamas! Causando ${this.danioLanzallamas * 0.85} porque su rival es de tipo agua`)
+          PokemonAtacado.recibirAtaque(this.danioLanzallamas * 0.85)
+          break
+        }
+        case "Planta": {
+          console.log(`${this.nombre} uso ¡Lanza llamas! Causando ${this.danioLanzallamas * 1.25} porque su rival es de tipo planta`)
+          PokemonAtacado.recibirAtaque(this.danioLanzallamas * 1.25)
+          break
+        }
+        case "Fuego": {
+          console.log(`${this.nombre} uso ¡Lanza llamas! Causando ${this.danioLanzallamas} porque su rival es de tipo fuego`)
+          PokemonAtacado.recibirAtaque(this.danioLanzallamas)
+          break
+        }
+      }
+  }
+}
 
+
+
+        class Bulbasaur extends Pokemon {
+          constructor(nombreParam, claseParam, vidaParam, danioLatigazo) {
+            super(nombreParam, claseParam, vidaParam)
+            this.danioLatigazo = danioLatigazo
+          }
+          latigazo(PokemonAtacado) {
+            switch (PokemonAtacado.clase) {
+              case "Agua": {
+                console.log(`${this.nombre} uso ¡Latigazo! Causando ${this.danioLatigazo * 1.25} porque su rival es de tipo agua`)
+                PokemonAtacado.recibirAtaque(this.danioLatigazo * 1.25)
+                break
+              }
+              case "Planta": {
+                console.log(`${this.nombre} uso ¡Latigazo! Causando ${this.danioLatigazo} porque su rival es de tipo planta`)
+                PokemonAtacado.recibirAtaque(this.danioLatigazo)
+                break
+              }
+              case "Fuego": {
+                console.log(`${this.nombre} uso ¡Latigazo! Causando ${this.danioLatigazo * 0.85} porque su rival es de tipo fuego`)
+                PokemonAtacado.recibirAtaque(this.danioLatigazo * 0.85)
+                break
+              }
+            }
+        }
       }
 
-
-
-      PokemonAtacado.recibirAtaque(this.danioLanzallamas * 0.90)
-    }
-    if (PokemonAtacado.clase === "Planta") {
-      console.log(`${this.nombre} uso ¡Lanza llamas! Causando ${this.danioLanzallamas * 1.25} porque su rival es de tipo planta`)
-      PokemonAtacado.recibirAtaque(this.danioLanzallamas * 1.25)
-    }
-    if (PokemonAtacado.clase === "Fuego") {
-      console.log(`${this.nombre} uso ¡Lanza llamas! Causando ${this.danioLanzallamas}`)
-      PokemonAtacado.recibirAtaque(this.danioLanzallamas)
-    }
-  }
-}
-
-
-
-class Bulbasaur extends Pokemon {
-  constructor(nombreParam, claseParam, vidaParam, danioLatigazo) {
-    super(nombreParam, claseParam, vidaParam)
-    this.danio = danioLatigazo
-  }
-  latigazo(PokemonAtacado) {
-    console.log(`${this.nombre} uso ¡Latigazo! causando ${this.danioLatigazo}`)
-    PokemonAtacado.recibirAtaque(this.danioLatigazo)
-  }
-}
-
-
-class Squirtle extends Pokemon {
-  constructor(nombreParam, claseParam, vidaParam, danioBurbujas) {
-    super(nombreParam, claseParam, vidaParam)
-    this.danioBurbujas = danioBurbujas
-  }
-  burbujas(PokemonAtacado) {
-    if (PokemonAtacado.clase === "Planta") {
-      const parraLanzallamasAgua = document.getElementById("dialogo2")
-      parraLanzallamasAgua.innerText = (`${this.nombre} uso ¡Burbujas! Causando ${(this.danioBurbujas * 0.85)} porque su rival es de tipo Planta`)
-      PokemonAtacado.recibirAtaque(this.danioBurbujas * 0.90)
-    }
-    if (PokemonAtacado.clase === "Fuego") {
-      const parraLanzallamasAgua = document.getElementById("dialogo2")
-      parraLanzallamasAgua.innerText = `${this.nombre} uso ¡Burbujas! Causando ${(this.danioBurbujas * 1.25)} porque su rival es de tipo Fuego`
-      PokemonAtacado.recibirAtaque(this.danioBurbujas * 1.25)
-    }
-    if (PokemonAtacado.clase === "Agua") {
-      console.log(`${this.nombre} uso ¡Burbujas! Causando ${this.danioBurbujas}`)
-      PokemonAtacado.recibirAtaque(this.danioBurbujas)
-    }
-  }
-}*/class producto { 
-  constructor(nombreParam, colorparam, precioparam) {
-    this.nombre = nombreParam
-    this.color = colorparam
-    this.precio = precioparam
-  } 
-  comprar(){
-      dinero -= this.precio
-      console.log(dinero)
-  }
-}
-
-const Motog30 = new producto ("moto g30", "negro", 15)
-const Samsungs20 = new producto ("samsung s20", "blanco", 20)
-const iPhone12 = new producto ("I Phone", "negro", 25)
+        class Squirtle extends Pokemon {
+          constructor(nombreParam, claseParam, vidaParam, danioBurbujas) {
+            super(nombreParam, claseParam, vidaParam)
+            this.danioBurbujas = danioBurbujas
+          }
+          burbujas(PokemonAtacado) {
+            switch (PokemonAtacado.clase) {
+              case "Agua": {
+                console.log(`${this.nombre} uso ¡Burbujas! Causando ${this.danioBurbujas} porque su rival es de tipo agua`)
+                PokemonAtacado.recibirAtaque(this.danioBurbujas * 0.85)
+                break
+              }
+              case "Planta": {
+                console.log(`${this.nombre} uso ¡¡Burbujas! Causando ${this.danioBurbujas * 0.85} porque su rival es de tipo planta`)
+                PokemonAtacado.recibirAtaque(this.danioBurbujas * 1.25)
+                break
+              }
+              case "Fuego": {
+                console.log(`${this.nombre} uso ¡Burbujas! Causando ${this.danioBurbujas * 1.25} porque su rival es de tipo fuego`)
+                PokemonAtacado.recibirAtaque(this.danioBurbujas)
+                break
+              }
+            }
+        }
+      }
